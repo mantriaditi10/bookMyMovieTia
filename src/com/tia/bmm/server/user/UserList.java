@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class UserList {
-	HashMap<Integer,User> Ul = new HashMap<Integer,User>();
+	private HashMap<Integer,User> Ul = new HashMap<Integer,User>();
     static int id;
 
     static {
@@ -30,7 +30,7 @@ public class UserList {
 
         User usr = new User(id,name,mno,eid,gen);
 
-        Ul.put(id,usr);
+        getUl().put(id,usr);
         id++;
     }
 
@@ -40,9 +40,9 @@ public class UserList {
         System.out.print("\nEnter email: ");
         eid = sc.nextLine();
         User u = new User();
-        for(Integer i : Ul.keySet()) {
-            u = Ul.get(i);
-            if(u.emailId.equals(eid)) return true;
+        for(Integer i : getUl().keySet()) {
+            u = getUl().get(i);
+            if(u.getEmailId().equals(eid)) return true;
         }
         return false;
     }
@@ -51,15 +51,23 @@ public class UserList {
         User u = new User();
         System.out.println("\n\n-------------------------------------------------");
         System.out.println("\nUSER DATABASE:");
-        for(Integer i : Ul.keySet()) {
-            u = Ul.get(i);
+        for(Integer i : getUl().keySet()) {
+            u = getUl().get(i);
             System.out.println("\nUserId: "+ u.userId);
             System.out.println("Name: " + u.name);
             System.out.println("Mobile No.: "+ u.mobNo);
-            System.out.println("Email: " + u.emailId);
+            System.out.println("Email: " + u.getEmailId());
             System.out.println("Gender: " + u.sex);
             System.out.println();
         }
         System.out.println("-------------------------------------------------\n");
     }
+
+	public HashMap<Integer,User> getUl() {
+		return Ul;
+	}
+
+	public void setUl(HashMap<Integer,User> ul) {
+		Ul = ul;
+	}
 }

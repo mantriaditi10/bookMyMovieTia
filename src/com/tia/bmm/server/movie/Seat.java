@@ -1,17 +1,33 @@
 package com.tia.bmm.server.movie;
 
 public class Seat {
-	int seatNo;
+	private int seatNo;
     SeatType seatType;
-    SeatStatus seatStatus;
+    private SeatStatus seatStatus;
     float seatCost;
 
-    Seat() {}
+    public Seat() {}
 
     Seat(int sno,SeatType st,SeatStatus ss,float c) {
-        seatNo = sno;
-        seatStatus = ss;
+        setSeatNo(sno);
+        setSeatStatus(ss);
         seatType = st;
         seatCost = c;
     }
+
+	public SeatStatus getSeatStatus() {
+		return seatStatus;
+	}
+
+	public void setSeatStatus(SeatStatus seatStatus) {
+		this.seatStatus = seatStatus;
+	}
+
+	public int getSeatNo() {
+		return seatNo;
+	}
+
+	public void setSeatNo(int seatNo) {
+		this.seatNo = seatNo;
+	}
 }

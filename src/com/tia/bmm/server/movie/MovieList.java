@@ -52,9 +52,9 @@ public class MovieList implements Serializable {
         System.out.println("\nMOVIE DATABASE:");
         for(int i=0; i<Ml.size();i++) {
             m = Ml.get(i);
-            System.out.println("\nMovieId: "+ m.movieId);
-            System.out.println("Movie Name: " + m.movieName);
-            System.out.println("Movie Type: "+ m.movieType);
+            System.out.println("\nMovieId: "+ m.getMovieId());
+            System.out.println("Movie Name: " + m.getMovieName());
+            System.out.println("Movie Type: "+ m.getMovieType());
             System.out.println("Movie Status: " + m.movieStatus);
             if(m.movieStatus == MovieStatus.NOW_SHOWING) {
                 System.out.println("\nNOW SHOWING IN THEATRES: ");
@@ -62,7 +62,7 @@ public class MovieList implements Serializable {
                     ob.displayTheatre(m.theaterId.get(j));
                 }
             }
-            System.out.println("\nRating: " + m.rating);
+            System.out.println("\nRating: " + m.getRating());
             System.out.println("----------------------------");
         }
         System.out.println("-------------------------------------------------\n");

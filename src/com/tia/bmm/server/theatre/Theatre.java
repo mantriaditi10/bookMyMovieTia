@@ -8,16 +8,32 @@ import com.tia.bmm.server.address.Address;
 import com.tia.bmm.server.movie.Movie;
 
 public class Theatre {
-	int theatreId;
-    String theatreName;
-    Address address;
-    List<Movie> movies = new ArrayList<Movie>();
+	public int theatreId;
+    private String theatreName;
+    public Address address;
+    private List<Movie> movies = new ArrayList<Movie>();
 
-    Theatre() {}
+    public Theatre() {}
 
     Theatre(int tid,String n,Address add) {
         theatreId = tid;
-        theatreName = n;
+        setTheatreName(n);
         address = add;
     }
+
+	public String getTheatreName() {
+		return theatreName;
+	}
+
+	public void setTheatreName(String theatreName) {
+		this.theatreName = theatreName;
+	}
+
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
+	}
 }

@@ -10,7 +10,7 @@ import com.tia.bmm.server.movie.MovieList;
 import com.tia.bmm.server.movie.MovieStatus;
 
 public class TheatreList {
-	List<Theatre> Tl = new ArrayList<Theatre>();
+	public List<Theatre> Tl = new ArrayList<Theatre>();
     static int id;
 
     static{
@@ -60,7 +60,7 @@ public class TheatreList {
         for(int i=0; i<Tl.size();i++) {
             t = Tl.get(i);
             System.out.println("\nTheatreId: "+ t.theatreId);
-            System.out.println("Theatre Name: " + t.theatreName);
+            System.out.println("Theatre Name: " + t.getTheatreName());
             a = t.address;
             a.displayAddress(a);
             System.out.println();
@@ -101,14 +101,14 @@ public class TheatreList {
                 mc = Integer.parseInt(sc.nextLine());
 
                 if(mc == 1) {
-                    t.movies.add(m);
+                    t.getMovies().add(m);
                     Tl.set(theatreIndex,t);
                 }
                 else if(mc==2) {
                     m.movieStatus = MovieStatus.NOW_SHOWING;
                     m.theaterId.add(tid);
                     //System.out.println("theaterId arraylist: " + m.theaterId);
-                    t.movies.add(m);
+                    t.getMovies().add(m);
                     obj.Ml.set(i,m);
                     Tl.set(theatreIndex,t);
                     //System.out.println(obj.Ml.get(i).theaterId);
@@ -127,21 +127,21 @@ public class TheatreList {
     void displayMoviesInTheatre(Theatre t) {
         Movie m = new Movie();
         System.out.println("\n=======================================================");
-        System.out.println("Now Showing Movies in " + t.theatreName + " are: ");
+        System.out.println("Now Showing Movies in " + t.getTheatreName() + " are: ");
         System.out.println("=======================================================");
 
-        for(int i=0;i<t.movies.size();i++) {
-            m = t.movies.get(i);
+        for(int i=0;i<t.getMovies().size();i++) {
+            m = t.getMovies().get(i);
             if(m.movieStatus == MovieStatus.NOW_SHOWING) {
                 m.displayMovie();
             }
         }
         System.out.println("\n=======================================================");
-        System.out.println("Upcoming Movies in " + t.theatreName + " are: ");
+        System.out.println("Upcoming Movies in " + t.getTheatreName() + " are: ");
         System.out.println("=======================================================");
 
-        for(int i=0;i<t.movies.size();i++) {
-            m = t.movies.get(i);
+        for(int i=0;i<t.getMovies().size();i++) {
+            m = t.getMovies().get(i);
             if(m.movieStatus == MovieStatus.UPCOMING) {
                 m.displayMovie();
             }
@@ -167,7 +167,7 @@ public class TheatreList {
             if(th.theatreId == t) break;
         }
 
-        System.out.println(th.theatreId + ": " + th.theatreName);
+        System.out.println(th.theatreId + ": " + th.getTheatreName());
         Address a = new Address();
         a = th.address;
         a.displayAddress(a);
