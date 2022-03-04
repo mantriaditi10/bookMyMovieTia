@@ -6,6 +6,7 @@ package com.tia.bmm.server.main;
 import java.util.Scanner;
 
 import com.tia.bmm.server.admin.Admin;
+import com.tia.bmm.server.movie.MovieList;
 import com.tia.bmm.server.user.UserList;
 
 /**
@@ -23,6 +24,7 @@ public class MainMenu {
 		int choice = 0;
       
         UserList ul = new UserList();
+        MovieList obj = new MovieList();
         
         do {
         	System.out.println("\nMenu:\n1. Register as User.\n2. Login as Admin.\n");
@@ -49,9 +51,23 @@ public class MainMenu {
 	
 	                        switch(c) {
 	                            case 1:
-	                                System.out.println("Movie Management");
+	                                int cho;
+                                    do{
+                                        System.out.println("\n\nMovie Management:\n1. Add Upcoming Movie.\n2. Display Movie database.\n-1. Return to Admin Menu.\n");
+                                        System.out.print("Enter choice: ");
+                                        cho = Integer.parseInt(sc.nextLine());
+
+                                        switch(cho) {
+                                            case 1:
+                                                obj.addMovie();
+                                                break;
+
+                                            case 2:
+                                                obj.displayMovieList();
+                                                break;
+                                        }
+                                    }while(cho!=-1);
 	                                break;
-	
 	                            case 2:
 	                            	System.out.println("Theatre Management");
 	                                break;
