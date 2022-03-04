@@ -1,4 +1,4 @@
-package com.tia.bmm.server;
+package com.tia.bmm.server.admin;
 
 public class InvalidAdminDetails extends Exception{
 	String str1;

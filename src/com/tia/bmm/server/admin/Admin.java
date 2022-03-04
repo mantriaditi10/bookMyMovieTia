@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tia.bmm.server;
+package com.tia.bmm.server.admin;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Admin {
 	final String adminEmailId="aditimantri04@gmail.com";
     final String password="Aditi123@";
 
-    boolean loginAsAdmin() {
+    public boolean loginAsAdmin() {
         Scanner sc = new Scanner(System.in);
         try{
             String eid,pw;
