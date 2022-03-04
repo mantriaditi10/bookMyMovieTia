@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.tia.bmm.server.theatre.TheatreList;
+
 public class MovieList implements Serializable {
-	List<Movie> Ml = new ArrayList<Movie>();
+	public List<Movie> Ml = new ArrayList<Movie>();
 	static int id;
 	
 	static {
@@ -44,7 +46,7 @@ public class MovieList implements Serializable {
 	    id++;
 	}
 	
-	public void displayMovieList() {
+	public void displayMovieList(TheatreList ob) {
         Movie m = new Movie();
         System.out.println("\n\n-------------------------------------------------");
         System.out.println("\nMOVIE DATABASE:");
@@ -54,6 +56,12 @@ public class MovieList implements Serializable {
             System.out.println("Movie Name: " + m.movieName);
             System.out.println("Movie Type: "+ m.movieType);
             System.out.println("Movie Status: " + m.movieStatus);
+            if(m.movieStatus == MovieStatus.NOW_SHOWING) {
+                System.out.println("\nNOW SHOWING IN THEATRES: ");
+                for(int j=0;j<m.theaterId.size();j++) {
+                    ob.displayTheatre(m.theaterId.get(j));
+                }
+            }
             System.out.println("\nRating: " + m.rating);
             System.out.println("----------------------------");
         }

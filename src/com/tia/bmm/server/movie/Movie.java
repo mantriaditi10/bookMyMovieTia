@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Movie {
 	int movieId;
-    List<Integer> theaterId = new ArrayList<Integer>(); 
+    public List<Integer> theaterId = new ArrayList<Integer>(); 
     String movieName;
     MovieType movieType;
-    MovieStatus movieStatus;
+    public MovieStatus movieStatus;
     float rating;
     List<Seat>showAtFour = new ArrayList<Seat>(50);
 
-    Movie() {}
+    public Movie() {}
 
     Movie(int mid,String n,MovieType mt,MovieStatus ms,float r) {
         movieId = mid;
@@ -35,7 +35,7 @@ public class Movie {
         }
     }
 
-    void displayMovie() {
+    public void displayMovie() {
         System.out.println("\nMovieId: "+ movieId);
         System.out.println("Movie Name: " + movieName);
         System.out.println();

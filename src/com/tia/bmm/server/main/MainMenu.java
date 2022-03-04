@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import com.tia.bmm.server.admin.Admin;
 import com.tia.bmm.server.movie.MovieList;
+import com.tia.bmm.server.theatre.TheatreList;
 import com.tia.bmm.server.user.UserList;
 
 /**
@@ -25,6 +26,7 @@ public class MainMenu {
       
         UserList ul = new UserList();
         MovieList obj = new MovieList();
+        TheatreList tl = new TheatreList();
         
         do {
         	System.out.println("\nMenu:\n1. Register as User.\n2. Login as Admin.\n");
@@ -63,13 +65,33 @@ public class MainMenu {
                                                 break;
 
                                             case 2:
-                                                obj.displayMovieList();
+                                                obj.displayMovieList(tl);
                                                 break;
                                         }
                                     }while(cho!=-1);
 	                                break;
 	                            case 2:
-	                            	System.out.println("Theatre Management");
+	                            	int choi;
+                                    do{
+                                        System.out.println("\n\nTheatre Management:\n1. Add new Theatre.\n2. Remove existing Theatre.\n3. Display Theatre database.\n4. Add movies in existing theatre.\n-1. Return to Admin Menu.\n");
+                                        System.out.print("Enter choice: ");
+                                        choi = Integer.parseInt(sc.nextLine());
+
+                                        switch(choi) {
+                                            case 1:
+                                                tl.addTheatre();
+                                                break;
+                                            case 2:
+                                                tl.removeTheatre();
+                                                break;
+                                            case 3:
+                                                tl.displayTheatreList();
+                                                break;
+                                            case 4:
+                                                tl.addMovieInTheatre(obj);
+                                                break;
+                                        }
+                                    }while(choi!=-1);
 	                                break;
 	
 	                            case 3:
