@@ -6,6 +6,7 @@ package com.tia.bmm.server.main;
 import java.util.Scanner;
 
 import com.tia.bmm.server.admin.Admin;
+import com.tia.bmm.server.booking.MyServer;
 import com.tia.bmm.server.movie.MovieList;
 import com.tia.bmm.server.theatre.TheatreList;
 import com.tia.bmm.server.user.UserList;
@@ -27,9 +28,10 @@ public class MainMenu {
         UserList ul = new UserList();
         MovieList obj = new MovieList();
         TheatreList tl = new TheatreList();
+        MyServer ms = new MyServer();
         
         do {
-        	System.out.println("\nMenu:\n1. Register as User.\n2. Login as Admin.\n");
+        	System.out.println("\nMenu:\n1. Register as User.\n2. Login as Admin.\n 3. Establish Connection with Booking Portal.");
             System.out.println("-1 to exit");
             System.out.print("Enter Choice:");
             choice = Integer.parseInt(sc.nextLine());
@@ -100,6 +102,14 @@ public class MainMenu {
 	                        }
 	                    }while(c!=-1);
                     }
+                    break;
+                case 3:
+				try {
+					ms.chatWithClient(ul,obj,tl);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                     break;
               }   
         }

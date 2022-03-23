@@ -34,15 +34,18 @@ public class UserList {
         id++;
     }
 
-    boolean loginAsUser() {
+    public boolean loginAsUser() {
         Scanner sc = new Scanner(System.in);
-        String eid;
+        String eid, mn;
         System.out.print("\nEnter email: ");
         eid = sc.nextLine();
+        System.out.print("\nEnter Mobile Number: ");
+        mn = sc.nextLine();
         User u = new User();
         for(Integer i : getUl().keySet()) {
             u = getUl().get(i);
-            if(u.getEmailId().equals(eid)) return true;
+            if(u.getEmailId().equals(eid) && u.getMobNo().equals(mn)) 
+            	return true;
         }
         return false;
     }
@@ -55,7 +58,7 @@ public class UserList {
             u = getUl().get(i);
             System.out.println("\nUserId: "+ u.userId);
             System.out.println("Name: " + u.name);
-            System.out.println("Mobile No.: "+ u.mobNo);
+            System.out.println("Mobile No.: "+ u.getMobNo());
             System.out.println("Email: " + u.getEmailId());
             System.out.println("Gender: " + u.sex);
             System.out.println();
